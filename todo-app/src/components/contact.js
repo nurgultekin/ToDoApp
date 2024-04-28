@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import NavigationBar from '../components/nav-bar.js';
 
 const Contact = () => (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoItem({ task, deleteTask, toggleCompleted }) { // Change function name to ToDoItem
+function TodoItem({ task, deleteTask, toggleCompleted }) { 
 function handleChange() {
  toggleCompleted(task.id);
  }

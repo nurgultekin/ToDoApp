@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import About from './about.js';
 import Contact from './contact.js';
-import ToDoList from './todo.js';
+import TodoPage from './components/todo';
 
 
 const NavigationBar = () => (

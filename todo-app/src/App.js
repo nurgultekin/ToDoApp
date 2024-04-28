@@ -1,39 +1,53 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ToDoList from './components/todo.js';
-import NavigationBar from './components/nav-bar.js';
-import About from './components/about.js';
-import Contact from './components/contact.js';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import TodoPage from './components/todo';
+import NavigationBar from './components/nav-bar';
+import About from './components/about';
+import Contact from './components/contact';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Router>
-          <div className="App">
-            <NavigationBar />
-            <Switch>
-              <Route path="/about" component={About} />
-              <Route path="/todo" component={ToDoList} />
-              <Route path="/contact" component={Contact} />
-            </Switch>
-          </div>
-        </Router>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/todos">Todos</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/about">
+            <About/>
+          </Route>
+          <Route path="/todos">
+            <ToDoList />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+        </Switch>
+        
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Welcome to the To-Do App!</h1>
         <p>
           This is an application that will make your everyday life easier and allow you to organize your daily tasks.
         </p>
         <p>
-          Click <a href="todo">here</a> to proceed!
+          Click <Link to="/todos">here</Link> to proceed!
         </p>
-      </header>
-    </div>
+      </div>
+    </Router>
   );
-}
-
+};
 
 export default App;

@@ -1,69 +1,56 @@
-import React, { useState } from 'react';
-import TodoItem from './ToDoItem.js';
 
-function ToDoList() {
-    const [tasks, setTasks] = useState([
-    {
-    id: 1,
-    text: 'Clean the cat litter',
-    completed: true
-    },
-    {
-    id: 2,
-    text: 'Complete the React assignment',
-    completed: false
-    },
-    {
-        id: 3,
-        text: 'Send the internship application (Ericsson)',
-        completed: false
-        },
-    {
-            id: 4,
-            text: 'Meet Erika (4 PM)',
-            completed: false
-         }
-    ]);
-    
-    const [text, setText] = useState('');
-    function addTask(text) {
-        const newTask = {
-            id: Date.now(),
-            text,
-            completed: false
-        };
-        setTasks([...tasks, newTask]);
-        setText('');
+import React, { useState, useEffect } from 'react';
+
+const TodoPage = () => {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
+
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    setTodos(savedTodos);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const handleInputChange = (e) => {
+    setNewTodo(e.target.value);
+  };
+
+  const addTodo = () => {
+    if (newTodo.trim() !== '') {
+      setTodos([...todos, newTodo]);
+      setNewTodo('');
     }
-    
-   function deleteTask(id) {
-    setTasks(tasks.filter(task => task.id !== id));
-    }
-   function toggleCompleted(id) {
-    setTasks(tasks.map(task => {
-    if (task.id === id) {
-    return {...task, completed: !task.completed};
-    } else {
-    return task;
-    } 
-    }));
-    }
-   return (
-    <div className="todo-list">
-    {tasks.map(task => (
-    <TodoItem
-    key={task.id} 
-    task={task}
-    deleteTask={deleteTask}
-    toggleCompleted={toggleCompleted} 
-    />
-    ))}
-   <input
-    value={text}
-    onChange={e => setText(e.target.value)} 
-    />
-   <button onClick={() => addTask(text)}>Add</button>
+  };
+
+  const deleteTodo = (index) => {
+    const updatedTodos = todos.filter((todo, i) => i !== index);
+    setTodos(updatedTodos);
+  };
+
+  const clearTodos = () => {
+    setTodos([]);
+  };
+
+  return (
+    <div>
+      <h1>Todo Page</h1>
+      <input type="text" value={newTodo} onChange={handleInputChange} />
+      <button onClick={addTodo}>Add Todo</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+            <button onClick={() => deleteTodo(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+      {todos.length > 0 && <button onClick={clearTodos}>Clear All</button>}
+      {todos.length === 0 && <p>No todos remaining!</p>}
     </div>
-    );
-   }
-   export default ToDoList;
+  );
+};
+
+export default TodoPage;
