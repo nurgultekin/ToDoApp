@@ -17,6 +17,7 @@
 
 .name-surname input {
     width: 35%; /* Each name and surname input takes up 45% of the container width */
+
 }
 
 .input-group {
@@ -29,6 +30,8 @@
     display: block;
     margin-bottom: 5px;
     width: 100%;
+    font-size: 18px; 
+    font-family: "Roboto", sans-serif; 
 }
 
 .input-group input {

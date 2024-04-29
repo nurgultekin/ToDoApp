@@ -6,7 +6,7 @@
 .about-content {
     display: flex;
     max-width: 80%; /* Adjust as needed */
-    padding: 20px;
+    padding: 20px;  
 }
 
 .about-image {
@@ -19,7 +19,7 @@
 .about-image img {
     width: 100%;
     max-width: 70%; 
-    background-position: left;
+    background-position: center;
     
 
 }

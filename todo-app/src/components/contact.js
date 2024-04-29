@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Contact.css'; // Import your CSS file for styling
+import './Contact.css'; 
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // You can handle form submission here
+        // handle form submission here
         console.log(formData);
         // Reset form after submission
         setFormData({
@@ -34,7 +34,6 @@ const Contact = () => {
             <header className="App-header">
                 <div className="contact-container">
                     <h1>Contact</h1>
-                    <p>Send us an email here or chat with us!</p>
                     <form onSubmit={handleSubmit} className="contact-form">
                         <div className="name-surname">
                             <div className="input-group">

@@ -5,15 +5,23 @@ const TodoPage = () => {
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  const [allCompleted, setAllCompleted] = useState(false);
 
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
     setTodos(savedTodos);
+    updateAllCompleted(savedTodos);
   }, []);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
+    updateAllCompleted(todos);
   }, [todos]);
+
+  const updateAllCompleted = (todosArray) => {
+    const allCompleted = todosArray.every(todo => todo.completed);
+    setAllCompleted(allCompleted);
+  };
 
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
@@ -51,30 +59,39 @@ const TodoPage = () => {
 
   return (
     <div className="todo-container">
-      <h1>Todo Page</h1>
+      <h1>Make your list, and track your daily tasks!</h1>
       <input type="text" value={newTodo} onChange={handleInputChange} />
-      <button onClick={addTodo}>Add Todo</button>
+      <button onClick={addTodo}>Add to-do</button>
       <ul>
         {todos.map((todo, index) => (
           <li className="todo-item" key={index}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => toggleTodo(index)}
-            />
-            <span
-              style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-            >
-              {todo.text}
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggleTodo(index)}
+              />
+              <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                {todo.text}
+              </span>
+            </label>
+            <span className="delete-icon" onClick={() => deleteTodo(index)}>
+              X
             </span>
-            <button onClick={() => deleteTodo(index)}>Delete</button>
           </li>
         ))}
       </ul>
-      {todos.length > 0 && (
-        <button onClick={clearTodos}>Clear All</button>
+      {todos.length > 0 && <button onClick={clearTodos}>Clear All</button>}
+      {todos.length === 0 && (
+        <div className="no-todos-message">
+          <div className="fade-in-animation">No todos remaining. Type to start!</div>
+        </div>
       )}
-      {todos.length === 0 && <p>No todos remaining!</p>}
+      {allCompleted && todos.length > 0 && (
+        <div className="all-completed-message fade-in-animation">
+          All tasks completed!
+        </div>
+      )}
       {completedTodos.length > 0 && (
         <>
           <h2>Completed Tasks</h2>
@@ -85,9 +102,7 @@ const TodoPage = () => {
           </ul>
         </>
       )}
-      {completedTodos.length > 0 && (
-        <button onClick={handleSaveCompleted}>Save Completed</button>
-      )}
+      {completedTodos.length > 0 && <button onClick={handleSaveCompleted}>Save Completed</button>}
     </div>
   );
 };
