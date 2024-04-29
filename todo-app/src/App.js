@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { BrowserRouter,  Route, Routes, Link } from 'react-router-dom';
@@ -7,7 +6,6 @@ import NavigationBar from './components/NavBar';
 import About from './components/About';
 import Contact from './components/Contact';
 import planning from './components/planning.avif';
-
 
 
 
