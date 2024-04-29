@@ -1,0 +1,28 @@
+.todo-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: bisque;
+  }
+  
+  .todo-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .todo-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  
+  .todo-item button {
+    margin-left: 10px;
+  }
+  
+  .clear-button {
+    margin-top: 10px;
+  }
+  

@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 9vmin;
   pointer-events: none;
 }
 
@@ -35,4 +35,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.hero-title {
+  font-family:'Roboto';
+  color:rgb(34, 34, 70);
+  text-align: center;
+}
+
+.hero-text {
+  font-family: "roboto";
+  font-size: 20px;
+  text-align: center;
+
+
 }
