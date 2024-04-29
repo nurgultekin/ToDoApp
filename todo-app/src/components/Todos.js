@@ -83,12 +83,12 @@ const TodoPage = () => {
       </ul>
       {todos.length > 0 && <button onClick={clearTodos}>Clear All</button>}
       {todos.length === 0 && (
-        <div className="no-todos-message">
+        <div className="message">
           <div className="fade-in-animation">No todos remaining. Type to start!</div>
         </div>
       )}
       {allCompleted && todos.length > 0 && (
-        <div className="all-completed-message fade-in-animation">
+        <div className="message fade-in-animation">
           All tasks completed!
         </div>
       )}

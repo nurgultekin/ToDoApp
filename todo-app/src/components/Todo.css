@@ -16,9 +16,12 @@
   }
   
   .todo-container li {
+    display:flex;
     margin-bottom: 10px; /* should add margin between list items */
-
+    align-items: center;
   }
+
+
   
   .todo-container input[type="text"] {
     margin-bottom: 20px; /* Add space between input and button */
@@ -85,8 +88,12 @@
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
-  }
+    justify-content: space-between;
+    display:flex;
+    width:50%;
+    align-items: center;
 
+  }
 
   
   .todo-item button {
@@ -102,7 +109,6 @@
     color: red;
     margin-left: 10rem; /* Add some space between the delete icon and the todo item */
     font-size: 1.2rem;
-    position: relative; 
   
   
   }
@@ -114,7 +120,7 @@
   .delete-icon:hover::after {
     content: "Remove"; /* Text to display when I hover over X */
     position: absolute;
-    top: -20px; 
+    bottom: 25px; 
     left: 0;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 5px;
@@ -123,6 +129,13 @@
   }
 
   /*Alert/message after all the tasks were completed or deleted*/
+
+  .message {
+    font-family: "Roboto";
+    font-size: 18px;
+    color:white;
+
+  }
 
   .fade-in-animation {
     animation: fadeIn 0.5s ease-in-out;
