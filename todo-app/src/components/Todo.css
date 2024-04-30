@@ -8,6 +8,7 @@
     max-width: 800px; 
     text-align: center; 
     justify-content: center;
+
   }
 
   .todo-container ul {
@@ -20,7 +21,6 @@
     margin-bottom: 10px; /* should add margin between list items */
     align-items: center;
   }
-
 
   
   .todo-container input[type="text"] {
@@ -92,6 +92,7 @@
     display:flex;
     width:50%;
     align-items: center;
+    margin: 0 auto;
 
   }
 
