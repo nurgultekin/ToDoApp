@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './Todo.css';
 
 const TodoPage = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    return savedTodos;
+  });
+
   const [completedTodos, setCompletedTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [allCompleted, setAllCompleted] = useState(false);
 
   useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-    setTodos(savedTodos);
-    updateAllCompleted(savedTodos);
-  }, []);
+    updateAllCompleted(todos);
+  }, [todos]);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
-    updateAllCompleted(todos);
   }, [todos]);
 
   const updateAllCompleted = (todosArray) => {
@@ -29,7 +30,8 @@ const TodoPage = () => {
 
   const addTodo = () => {
     if (newTodo.trim() !== '') {
-      setTodos([...todos, { text: newTodo, completed: false }]);
+      const updatedTodos = [...todos, { text: newTodo, completed: false }];
+      setTodos(updatedTodos);
       setNewTodo('');
     }
   };
