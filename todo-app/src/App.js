@@ -5,7 +5,7 @@ import TodoPage from './components/Todos';
 import NavigationBar from './components/NavBar';
 import About from './components/About';
 import Contact from './components/Contact';
-import planning from './components/planning.avif';
+import planning from './components/planning.jpg';
 
 
 
