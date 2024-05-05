@@ -1,10 +1,12 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import NavigationBar from './components/Navbar';
+import NavigationBar from './components/NavBar';
 import About from './components/About';
 import Contact from './components/Contact';
 import HeroSection from './components/Hero'; 
+import 'tailwindcss/tailwind.css';
+
 
 
 const App = () => {
@@ -28,15 +30,6 @@ const Home = () => (
     {/* Render the HeroSection component */}
     <HeroSection />
     {/* Adjust the padding to accommodate the sticky navbar */}
-    <div style={{ paddingTop: '70px' }}>
-      <h1 className="hero-title">Welcome to the To-Do App!</h1>
-      <p className="hero-text">
-        This is an application that will make your everyday life easier and allow you to organize your daily tasks.
-      </p>
-      <p className="hero-text">
-        Click <Link to="/todos">here</Link> to proceed!
-      </p>
-    </div>
     <SectionScrolls />
   </div>
 );

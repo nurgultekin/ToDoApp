@@ -1,13 +1,11 @@
 import React from 'react';
 import './About.css';
-import Omoss from './Omoss.png';
+
 
 const About = () => (
     <div className="AboutContainer">
         <div className="about-content">
-            <div className="about-image">
-                <img src={Omoss} alt="About Us" />
-            </div>
+            
             <div className="about-text">
                 <h1>About us</h1>
                 <p>
