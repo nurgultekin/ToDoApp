@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter,  Route, Routes, Link } from 'react-router-dom';
 import TodoPage from './components/Todos';
 import NavigationBar from './components/NavBar';
-import About from './components/About';
+import About from './components/about';
 import Contact from './components/Contact';
 import planning from './components/planning.jpg';
 
@@ -17,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/todos" element={<TodoPage />} />
+        {/* <Route path="/todos" element={<Blogg />} /> */}
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
